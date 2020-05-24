@@ -1,3 +1,3 @@
 # Javascript-Projects
 
-Hi, these are the files that I've made to learn Javascript
+Hi, these are the projects that I've done to learn Javascript
