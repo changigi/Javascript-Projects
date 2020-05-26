@@ -42,11 +42,11 @@ function checkCashRegister(price, cash, cid) {
             if (changeRemainder >= cidObj["FIVE"]){
                 resultObj["FIVE"] = cidObj["FIVE"];
                 changeRemainder = changeRemainder- cidObj["FIVE"]
-            } else if (changeRemainder < cidObj["FIVE"]){
+            } else if (changeRemainder < cidObj["FIVE"] && changeRemainder > 5){
                 resultObj["FIVE"] = Math.floor(changeRemainder/5)*5;
                 changeRemainder = changeRemainder%5;
+            } else {
                 resultObj["FIVE"] = 0;
-                
             };
             if (changeRemainder <= cidObj["ONE"]){
                 resultObj["ONE"] = changeRemainder;
@@ -137,7 +137,7 @@ function checkCashRegister(price, cash, cid) {
     } else if (sameAsCid == true) {
         finalResult = {status: "CLOSED", change: cid};
     } else{
-        var filteredArr = resultArr.filter(x => x[1]!=0);
+        var filteredArr = resultArr.filter(x => x[1]!=0).reverse();
         finalResult = {status: "OPEN", change: filteredArr};
     }
     
@@ -148,7 +148,7 @@ function checkCashRegister(price, cash, cid) {
     
   }
   
-  checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])
+  checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
   
 
 
